@@ -1,5 +1,5 @@
 {
-   "abstract" : "The great new PGObject::Type::BigFloat!",
+   "abstract" : "Math::BigFloat wrappers for PGObject classes",
    "author" : [
       "Chris Travers <chris.travers@gmail.com>"
    ],
@@ -39,5 +39,5 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.01"
+   "version" : "0.02"
 }

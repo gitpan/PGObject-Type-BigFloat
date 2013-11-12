@@ -25,12 +25,12 @@ my $functions = {
                
 };
 
-plan skipall => 'Not set up for dbtests' unless $ENV{DB_TESTS};
+plan skip_all => 'Not set up for dbtests' unless $ENV{DB_TESTS};
 
 # DB Setup
 
 my $predbh = DBI->connect('dbi:Pg:', 'postgres');
-plan skipall => "Could not get superuser access to db. skipping" unless $predbh;
+plan skip_all => "Could not get superuser access to db. skipping" unless $predbh;
 
 $predbh->do('CREATE DATABASE test_pgobject_type_bigfloat');
 my $dbh = DBI->connect('dbi:Pg:dbname=test_pgobject_type_bigfloat');

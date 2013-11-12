@@ -1,5 +1,5 @@
 ---
-abstract: 'The great new PGObject::Type::BigFloat!'
+abstract: 'Math::BigFloat wrappers for PGObject classes'
 author:
   - 'Chris Travers <chris.travers@gmail.com>'
 build_requires:
@@ -21,4 +21,4 @@ requires:
   Math::BigFloat: 0
   PGObject: 0
   Test::More: 0
-version: 0.01
+version: 0.02
