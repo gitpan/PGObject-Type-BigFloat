@@ -1,5 +1,8 @@
 Revision history for PGObject-Type-BigFloat
 
+0.03	2013-11-13
+	Added proper null handling for undef values.
+
 0.02	2013-11-12
 	Fixed test cases in routine installation.
 

@@ -13,11 +13,11 @@ PGObject::Type::BigFloat - Math::BigFloat wrappers for PGObject classes
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 =head1 SYNOPSIS
@@ -63,6 +63,7 @@ This serializes this into a simple db-friendly form.
 
 sub to_db {
     my $self = shift @_; 
+    return undef if $self->is_undef;
     return $self->bstr;
 }
 
@@ -74,7 +75,21 @@ take simple normalized db floats and turn them into numeric representations.
 
 sub from_db {
     my ($self, $value) = @_;
-    return "$self"->new($value);
+    my $obj = "$self"->new($value);
+    $obj->is_undef(1) if ! defined $value;
+    return $obj;
+}
+
+=head2 is_undef(optionally $set);
+
+Return undef to the db or user interface.  Can be set through apps.
+
+=cut
+
+sub is_undef {
+    my ($self, $set) = @_; 
+    $self->{_pgobject_undef} = $set if defined $set;
+    return $self->{_pgobject_undef};
 }
 
 =head1 AUTHOR

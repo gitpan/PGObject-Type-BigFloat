@@ -22,10 +22,13 @@ my $functions = {
                create or replace function test__roundtrip(numeric) returns numeric
                language sql as
                $$SELECT $1;$$',
+     null => '
+               CREATE OR REPLACE FUNCTION test__null() RETURNS numeric
+               LANGUAGE SQL AS $$ SELECT null::numeric; $$ ',
                
 };
 
-plan skip_all => 'Not set up for dbtests' unless $ENV{DB_TESTS};
+plan skip_all => 'Not set up for dbtests' unless $ENV{DB_TESTING};
 
 # DB Setup
 
@@ -42,7 +45,7 @@ for my $fnc (keys %$functions){
 # Planning
 
 if ($dbh) {
-   plan tests => 9;
+   plan tests => 12;
 } else {
    plan skipall => "No database connection, or connection failed";
 }
@@ -62,8 +65,21 @@ for my $type (qw(float4 float8 numeric)){
                      "Type $type returns PGObject::Type::BigFloat object");
 }
 
-my $val = PGObject::Type::BigFloat->new(1.222);
 my ($ref) = PGObject->call_procedure(
+           funcname   => 'null',
+           funcprefix => 'test__',
+           args       => [],
+           dbh        => $dbh,
+);
+my ($val) = values %$ref;
+ok(eval {$val->isa('Math::BigFloat')}, "Type null returns BigFloat object");
+ok(eval {$val->isa('PGObject::Type::BigFloat')}, 
+                     "Type null returns PGObject::Type::BigFloat object");
+ok(! defined $val->to_db, 'null returns undef to db');
+
+$val = PGObject::Type::BigFloat->new(1.222);
+
+($ref) = PGObject->call_procedure(
            funcname   => 'roundtrip',
            funcprefix => 'test__',
            args       => [$val],
