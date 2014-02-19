@@ -20,4 +20,4 @@ no_index:
 requires:
   Math::BigFloat: 0
   PGObject: 0
-version: 1.00_001
+version: 1.00
