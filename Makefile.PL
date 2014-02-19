@@ -8,12 +8,15 @@ WriteMakefile(
     AUTHOR              => q{Chris Travers <chris.travers@gmail.com>},
     VERSION_FROM        => 'lib/PGObject/Type/BigFloat.pm',
     ABSTRACT_FROM       => 'lib/PGObject/Type/BigFloat.pm',
+    ($ExtUtils::MakeMaker::VERSION >= 6.3002
+      ? ('LICENSE'=> 'BSD')
+      : ()),
     PL_FILES            => {},
     PREREQ_PM           => { 
                            'PGObject'       => 0,
                            'Math::BigFloat' => 0,
-                           'Test::More'     => 0,
                            },
+    BUILD_REQUIRES	=> { 'Test::More'     => 0, },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'PGObject-*' },
 );

@@ -13,11 +13,11 @@ PGObject::Type::BigFloat - Math::BigFloat wrappers for PGObject classes
 
 =head1 VERSION
 
-Version 0.03
+Version 1.00
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '1.00_001';
 
 
 =head1 SYNOPSIS
