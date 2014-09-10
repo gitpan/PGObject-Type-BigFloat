@@ -13,11 +13,11 @@ PGObject::Type::BigFloat - Math::BigFloat wrappers for PGObject classes
 
 =head1 VERSION
 
-Version 1.00
+Version 1.0.1
 
 =cut
 
-our $VERSION = '1.00';
+our $VERSION = '1.0.1';
 
 
 =head1 SYNOPSIS
@@ -140,7 +140,7 @@ L<http://search.cpan.org/dist/PGObject-Type-BigFloat/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2013 Chris Travers.
+Copyright 2013-2014 Chris Travers.
 
 This program is released under the following license: BSD
 

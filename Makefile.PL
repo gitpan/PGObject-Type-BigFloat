@@ -19,4 +19,14 @@ WriteMakefile(
     BUILD_REQUIRES	=> { 'Test::More'     => 0, },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'PGObject-*' },
+    META_MERGE => {
+        'meta-spec' => { version => 2 },
+         resources => {
+             repository => {
+                 type => 'git',
+                 url  => 'https://github.com/ledgersmb/PGObject-Type-BigFloat.git',
+                 web  => 'https://github.com/ledgersmb/PGObject-Type-BigFloat',
+             },
+         },
+    },
 );
